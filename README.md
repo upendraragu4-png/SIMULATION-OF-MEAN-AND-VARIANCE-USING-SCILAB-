@@ -35,8 +35,56 @@ __PROCEDURE:__
 6.Verify the generated results
 
 __PROGRAM:__
+```
+clear;
+ clc; 
+clear; 
+//Mean Value 
+function X=f(x), 
+z=3*(1-x)^2,
+//Marginal Probability Density Function 
+X=x*z; 
+endfunction 
+a=1.5; 
+b=2; 
+EX=intg(a,b,f); //Mean value of X
+function Y=c(y), 
+z=3*(1-y)^2, //Marginal Probability Density Function 
+Y=y*z;
+endfunction
+ EY=intg(a,b,c);//Mean value of Y
+ disp(EX,"i)Mean of X =") 
+disp(EY," Mean of Y =")
+//Variance 
+function X=g(x),
+ z=3*(1-x)^2,
+//Marginal Probability Density Function
+ X=x^2*z; 
+endfunction 
+a=1.5; 
+b=2; 
+EX2=intg(a,b,g); 
+function Y=h(y), z=3*(1-y)^2,
+//Marginal Probability Density Function
+ Y=y^2*z;
+endfunction 
+EY2=intg(a,b,h); 
+vX2=EX2-(EX)^2; //Variance of X 
+vY2=EY2-(EY)^2;//Variance of Y 
+disp(vX2,"ii)Variance of X"); 
+disp(vY2," Variance of Y");
+//Cross Correlation
+ x= input("type in the reference sequence=");
+ y= input("type in the second sequence=");
+n1=max(size(y))-1;
+n2=max(size(x))-1;
+r=corr(x,y,n1); 
+plot2d3('gnn',r);
+```
 
 __OUTPUT GRAPH:__
+<img width="1917" height="1076" alt="image" src="https://github.com/user-attachments/assets/1ac16d4b-c410-4e24-aaa2-c75e854037c7" />
 
 __RESULT:__
 
+Hence, mean and variance are simulated in Scilab using the program mentioned above.
